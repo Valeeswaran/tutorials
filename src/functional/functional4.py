@@ -1,28 +1,36 @@
-def add(x, y):
-    return x + y
+# Returning Functions
+
+def create_printer():
+    def printer():
+        print("Hello functional!")
+    return printer
 
 
-def subtract(x, y):
-    return x - y
+my_printer = create_printer()
+my_printer()
+
+# Instead of using the following functions
+# def double(x):
+#     return x * 2
+#
+#
+# def triple(x):
+#     return x * 3
+#
+#
+# def quadruple(x):
+#     return x * 4
 
 
-def combine_2_and_3(func):
-    return func(2, 3)
+def creat_multiplier(a):
+    def multiplier(x):
+        return x * a
+    return multiplier
 
+double = creat_multiplier(2)
+triple = creat_multiplier(3)
+quardple =  creat_multiplier(4)
 
-print(combine_2_and_3(subtract))
-
-
-def combine_names(func):
-    return func("Valee", "Krish")
-
-
-def append_with_space(str1, str2):
-    return f"{str1} {str2}"
-
-def form_notation(first, last):
-    return f"{last.upper()}, {first.upper()} "
-
-
-print(combine_names(append_with_space))
-print(combine_names(form_notation))
+print(double(5))
+print(triple(6))
+print(quardple(7))

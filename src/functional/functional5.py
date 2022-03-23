@@ -1,36 +1,35 @@
-# Returning Functions
+# Closure
+# When we define a function returns a other function, that function still has access the internal scope of the variable
 
 def create_printer():
+    my_favorite_number = 3
+
     def printer():
-        print("Hello functional!")
+        print(f"My favourite number is {my_favorite_number}")
+
     return printer
 
-
 my_printer = create_printer()
+# The following function still has the access to the local variable which is inside the function
 my_printer()
 
-# Instead of using the following functions
-# def double(x):
-#     return x * 2
-#
-#
-# def triple(x):
-#     return x * 3
-#
-#
-# def quadruple(x):
-#     return x * 4
+def create_counter():
+    count = 0
 
+    def get_count():
+        return count
 
-def creat_multiplier(a):
-    def multiplier(x):
-        return x * a
-    return multiplier
+    def increament():
+        nonlocal count # defining non local variable, it will be as outside function
+        count += 1
 
-double = creat_multiplier(2)
-triple = creat_multiplier(3)
-quardple =  creat_multiplier(4)
+    return (get_count, increament)
 
-print(double(5))
-print(triple(6))
-print(quardple(7))
+get_count, increment = create_counter()
+print(get_count())
+increment()
+increment()
+print(get_count())
+increment()
+increment()
+print(get_count())

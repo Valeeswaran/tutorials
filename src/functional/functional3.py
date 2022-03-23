@@ -1,32 +1,28 @@
-import math
+def add(x, y):
+    return x + y
 
-def double(x):
-    return x * 2
 
-def minus_one(x):
-    return x - 1
+def subtract(x, y):
+    return x - y
 
-def squared(x):
-    return x * x
 
-function_list = [
-    double,
-    minus_one,
-    squared,
-    math.sqrt
-]
-my_number = 3
+def combine_2_and_3(func):
+    return func(2, 3)
 
-# Mechanical way of doing the calculation
-my_number = double(my_number)
-my_number = minus_one(my_number)
-my_number = squared(my_number)
-print(my_number)
 
-my_number = 3
+print(combine_2_and_3(subtract))
 
-# Funcational way of doing the calculation
-for func in function_list:
-    my_number = func(my_number)
 
-print(my_number)
+def combine_names(func):
+    return func("Valee", "Krish")
+
+
+def append_with_space(str1, str2):
+    return f"{str1} {str2}"
+
+def form_notation(first, last):
+    return f"{last.upper()}, {first.upper()} "
+
+
+print(combine_names(append_with_space))
+print(combine_names(form_notation))

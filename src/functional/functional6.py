@@ -1,35 +1,30 @@
-# Closure
-# When we define a function returns a other function, that function still has access the internal scope of the variable
+# Higher order functions
 
-def create_printer():
-    my_favorite_number = 3
+# Writing in normal way
+# def divide(x, y):
+#     if y == 0:
+#         print("Warning: the second argument value is 0")
+#         return
+#     return x / y
 
-    def printer():
-        print(f"My favourite number is {my_favorite_number}")
 
-    return printer
+#print(divide(4, 1))
 
-my_printer = create_printer()
-# The following function still has the access to the local variable which is inside the function
-my_printer()
 
-def create_counter():
-    count = 0
+def devide(x, y):
+    return x / y
 
-    def get_count():
-        return count
 
-    def increament():
-        nonlocal count # defining non local variable, it will be as outside function
-        count += 1
+# Wrapper function
+def second_argument_isnt_zero(func):
+    def safe_version(*args):
+        if args[1] == 0:
+            print("Warning: second argument is zero")
+            return
+        return func(*args)
 
-    return (get_count, increament)
+    return safe_version
 
-get_count, increment = create_counter()
-print(get_count())
-increment()
-increment()
-print(get_count())
-increment()
-increment()
-print(get_count())
+divid_safe = second_argument_isnt_zero(devide)
+divid_safe(19, 0)
+print(divid_safe(10, 2))

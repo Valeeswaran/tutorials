@@ -3,7 +3,11 @@ ENVIRONMENT = "dev"
 def fetch_data_real():
     print("fetching data from the databse")
 
+
 def fetch_data_fake():
+    """
+    Creating fake function to deliver the result
+    """
     print("fetching fake data")
     return {
         "name": "Valee",
